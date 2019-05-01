@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/view_large_margin"
+        android:background="@color/color_white"
+        tools:context=".main.MainActivity">
+
+    <ImageView
+            android:id="@+id/activity_main_path_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_main_activity_path"
+            android:layout_marginTop="@dimen/view_large_margin"
+            android:layout_marginLeft="@dimen/view_large_margin"
+            android:layout_marginRight="@dimen/view_medium_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+    />
+
+    <ru.aviasales.cityview.presentation.DefaultCityView
+            android:id="@+id/activity_main_from_city_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/view_large_margin"
+            android:layout_marginRight="@dimen/view_large_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/activity_main_path_image_view"
+            app:layout_constraintRight_toRightOf="parent"
+    />
+
+    <ru.aviasales.cityview.presentation.DefaultCityView
+            android:id="@+id/activity_main_to_city_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/view_large_margin"
+            android:layout_marginLeft="@dimen/view_large_margin"
+            android:layout_marginRight="@dimen/view_large_margin"
+            app:layout_constraintTop_toBottomOf="@id/activity_main_from_city_view"
+            app:layout_constraintLeft_toRightOf="@id/activity_main_path_image_view"
+            app:layout_constraintRight_toRightOf="parent"
+    />
+
+    <Button
+            android:id="@+id/activity_main_search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_main_search_title"
+            android:drawableLeft="@drawable/ic_search_white"
+            android:drawablePadding="@dimen/view_medium_padding"
+            android:textColor="@color/color_white"
+            android:background="@color/color_sky_blue"
+            android:layout_marginTop="@dimen/view_large_margin"
+            android:paddingLeft="@dimen/view_large_padding"
+            android:paddingRight="@dimen/view_large_padding"
+            app:layout_constraintTop_toBottomOf="@id/activity_main_to_city_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+    />
+</android.support.constraint.ConstraintLayout>

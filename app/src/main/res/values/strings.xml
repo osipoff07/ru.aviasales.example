@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Aviasales</string>
+
+    <string name="default_no_connection_exception">Нет соединения с интернетом</string>
+    <string name="default_not_found_exception">Путь не найден, возможно на сервере ведутся технические работы</string>
+    <string name="default_server_response_exception">Ошибка работы сервера, обратитесь в службу поддержки</string>
+    <string name="default_exception_text">Произошла неизвестная ошибка, обратитесь в службу поддержки</string>
+
+    <string name="activity_main_search_title">Поиск</string>
+
+    <string name="activity_city_search_from_hint">Откуда вылет?</string>
+    <string name="activity_city_search_to_hint">Куда отправиться?</string>
+
+    <string name="layout_default_city_view_preview_text">Выбрать город</string>
+</resources>

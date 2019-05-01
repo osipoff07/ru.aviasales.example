@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ru.aviasales.cityview.presentation.DefaultCityView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/layout_city_list_item_city_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="@dimen/view_large_padding"
+        android:paddingLeft="@dimen/view_large_padding"
+        android:paddingTop="@dimen/view_medium_padding"
+        android:paddingBottom="@dimen/view_medium_padding"
+/>

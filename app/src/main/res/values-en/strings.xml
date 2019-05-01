@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aviasales</string>
+
+    <string name="default_no_connection_exception">No internet connection</string>
+    <string name="default_not_found_exception">The path was not found, it is possible that technical work is being carried out on the server.</string>
+    <string name="default_server_response_exception">Server error, please contact support</string>
+    <string name="default_exception_text">An unknown error occurred, please contact support</string>
+
+    <string name="activity_main_search_title">Search</string>
+
+    <string name="activity_city_search_from_hint">Departure place</string>
+    <string name="activity_city_search_to_hint">Arrival place</string>
+
+    <string name="layout_default_city_view_preview_text">Select city</string>
+</resources>

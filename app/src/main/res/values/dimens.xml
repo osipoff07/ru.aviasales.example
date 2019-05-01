@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="view_tiny_margin">2dp</dimen>
+    <dimen name="view_small_margin">4dp</dimen>
+    <dimen name="view_medium_margin">8dp</dimen>
+    <dimen name="view_large_margin">16dp</dimen>
+
+    <dimen name="view_tiny_padding">2dp</dimen>
+    <dimen name="view_small_padding">4dp</dimen>
+    <dimen name="view_medium_padding">8dp</dimen>
+    <dimen name="view_large_padding">16dp</dimen>
+
+    <dimen name="layout_custom_marker_title_text_size">22sp</dimen>
+    <dimen name="layout_default_city_view_name_text_size">18sp</dimen>
+</resources>
