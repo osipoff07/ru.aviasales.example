@@ -4,7 +4,7 @@ import com.google.android.gms.maps.model.LatLng
 
 sealed class MapModel {
 
-    data class CityMarker(
+    data class IataMarker(
         val point: LatLng,
         val text: String
     )

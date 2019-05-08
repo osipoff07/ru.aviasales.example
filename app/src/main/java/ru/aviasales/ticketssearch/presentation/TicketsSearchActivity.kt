@@ -13,6 +13,7 @@ import android.graphics.Bitmap
 import android.util.DisplayMetrics
 import android.widget.TextView
 import android.graphics.Canvas
+import android.support.annotation.ColorInt
 import android.view.View
 import android.view.ViewGroup
 import android.view.View.MeasureSpec
@@ -27,12 +28,17 @@ import ru.aviasales.ticketssearch.router.TicketsSearchModel
 import ru.aviasales.ticketssearch.router.TicketsSearchRouter
 import ru.aviasales.ticketssearch.presentation.model.MapModel
 import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.CameraUpdate
 
-private const val PATTERN_GAP_LENGTH_PX: Int = 20
+private const val PATTERN_GAP_LENGTH_PX: Int = 8
 private const val DEFAULT_PATH_WIDTH: Float = 10.0f
 private const val DEFAULT_ANCHOR: Float = 0.5f
+private const val TOP_PLANE_ANCHOR: Float = 0.5f
 private const val DEFAULT_MAP_PADDING: Int = 300
+@ColorInt
+private const val PATH_POINT_COLOR: Int = 0x70000000
+private const val PATH_Z_INDEX: Float = 10F
+private const val IATA_Z_INDEX: Float = 11F
+private const val PLANE_Z_INDEX: Float = 12F
 
 class TicketsSearchActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -63,16 +69,16 @@ class TicketsSearchActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun observeViewModel() {
-        viewModel.getFromCityMarkerLiveData().observe(this, object: Observer<MapModel.CityMarker>{
-            override fun onChanged(t: MapModel.CityMarker?) {
-                val data: MapModel.CityMarker = t ?: return
+        viewModel.getFromCityMarkerLiveData().observe(this, object: Observer<MapModel.IataMarker>{
+            override fun onChanged(t: MapModel.IataMarker?) {
+                val data: MapModel.IataMarker = t ?: return
 
                 createMarker(data)
             }
         })
-        viewModel.getToCityMarkerLiveData().observe(this, object: Observer<MapModel.CityMarker>{
-            override fun onChanged(t: MapModel.CityMarker?) {
-                val data: MapModel.CityMarker = t ?: return
+        viewModel.getToCityMarkerLiveData().observe(this, object: Observer<MapModel.IataMarker>{
+            override fun onChanged(t: MapModel.IataMarker?) {
+                val data: MapModel.IataMarker = t ?: return
 
                 createMarker(data)
             }
@@ -101,13 +107,15 @@ class TicketsSearchActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun createMarker(
-        data: MapModel.CityMarker
+        data: MapModel.IataMarker
     ) {
         val icon: BitmapDescriptor = BitmapDescriptorFactory.fromBitmap(createCustomMarker(data.text))
         map.addMarker(
             MarkerOptions()
                 .position(data.point)
                 .icon(icon)
+                .anchor(DEFAULT_ANCHOR, DEFAULT_ANCHOR)
+                .zIndex(IATA_Z_INDEX)
         )
     }
 
@@ -139,6 +147,8 @@ class TicketsSearchActivity : AppCompatActivity(), OnMapReadyCallback {
             .width(DEFAULT_PATH_WIDTH)
             .pattern(createPatternsItem())
             .addAll(path.data)
+            .zIndex(PATH_Z_INDEX)
+            .color(PATH_POINT_COLOR)
         map.addPolyline(rectOptions)
     }
 
@@ -155,9 +165,9 @@ class TicketsSearchActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun changePlainPosition(
         marker: Marker,
         data: MapModel.PlaneMarker
-    ): Unit = marker.let {
-        it.rotation = data.angle
-        it.position = data.point
+    ) {
+        marker.rotation = data.angle
+        marker.position = data.point
     }
 
     private fun createPlainMarker(
@@ -168,7 +178,8 @@ class TicketsSearchActivity : AppCompatActivity(), OnMapReadyCallback {
                 .position(data.point)
                 .rotation(data.angle)
                 .icon(BitmapDescriptorFactory.fromResource(ru.aviasales.R.mipmap.ic_plane))
-                .anchor(DEFAULT_ANCHOR, DEFAULT_ANCHOR)
+                .anchor(TOP_PLANE_ANCHOR, DEFAULT_ANCHOR)
+                .zIndex(PLANE_Z_INDEX)
         )
     }
 

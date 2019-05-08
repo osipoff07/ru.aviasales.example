@@ -8,12 +8,12 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingRight="@dimen/view_large_padding"
-        android:paddingLeft="@dimen/view_large_padding"
+        android:paddingRight="@dimen/view_medium_large_padding"
+        android:paddingLeft="@dimen/view_medium_large_padding"
         android:paddingTop="@dimen/view_tiny_padding"
         android:paddingBottom="@dimen/view_tiny_padding"
         android:background="@drawable/iata_market_backgroind"
-        android:alpha="0.95"
+        android:alpha="0.88"
     >
 
         <TextView

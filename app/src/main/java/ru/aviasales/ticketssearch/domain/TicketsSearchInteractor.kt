@@ -5,7 +5,7 @@ import ru.aviasales.common.domain.model.Location
 import ru.aviasales.ticketssearch.domain.trajectory.Point
 import ru.aviasales.ticketssearch.domain.trajectory.TrajectoryCreator
 
-private const val POINTS_COUNT: Int = 500
+private const val POINTS_COUNT: Int = 30000/20
 
 class TicketsSearchInteractor(
     private val trajectoryCreator: TrajectoryCreator,
